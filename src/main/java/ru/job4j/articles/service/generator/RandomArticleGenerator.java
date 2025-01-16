@@ -3,6 +3,8 @@ package ru.job4j.articles.service.generator;
 import ru.job4j.articles.model.Article;
 import ru.job4j.articles.model.Word;
 
+import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +17,8 @@ public class RandomArticleGenerator implements ArticleGenerator {
         Collections.shuffle(wordsCopy);
         var content = wordsCopy.stream()
                 .map(Word::getValue)
-                .collect(Collectors.joining(" "));
+                .collect(Collectors.joining((" ")));
+        wordsCopy.clear();
         return new Article(content);
     }
 }

@@ -1,6 +1,8 @@
 package ru.job4j.articles.model;
 
-public class Article {
+import java.util.Objects;
+
+public class  Article {
 
     private int id;
 
@@ -29,5 +31,22 @@ public class Article {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Article article = (Article) o;
+        return id == article.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
