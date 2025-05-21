@@ -15,15 +15,14 @@ class FoolTest {
 
     @Test
     void whenMainTrue() {
-        int[] startAt = new int[10];
-        String[] args = new String[0];
+
         Fool fool = new Fool();
         System.setOut(new PrintStream(output));
 
         while (fool.startAt < 20) {
             fool.player = "n";
-            fool.compare(String.valueOf(startAt));
-            //var answer = input.nextLine();
+            fool.compare(String.valueOf(fool.startAt));
+            //var answer = input.nextLine(); 1\r\n 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 1617 Fizz 19 Buzz Fizz 22 23 Fizz Buzz
             String test = output.toString();
             fool.player = "y";
             fool.compare(String.valueOf(test));
