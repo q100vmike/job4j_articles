@@ -13,24 +13,25 @@ class FoolTest {
 
     private ByteArrayOutputStream output = new ByteArrayOutputStream();
 
-    @Before
-    public void setUpStreams() {
-        System.setOut(new PrintStream(output));
-    }
-
     @Test
     void whenMainTrue() {
+        int[] startAt = new int[10];
         String[] args = new String[0];
         Fool fool = new Fool();
-        fool.main(args);
+        System.setOut(new PrintStream(output));
+
+        while (fool.startAt < 20) {
+            fool.player = "n";
+            fool.compare(String.valueOf(startAt));
+            //var answer = input.nextLine();
+            String test = output.toString();
+            fool.player = "y";
+            fool.compare(String.valueOf(test));
+        }
 
         String out = output.toString();
 
         assertEquals("Test string", output.toString());
     }
 
-    @After
-    public void cleanUpStreams() {
-        System.setOut(null);
-    }
 }
