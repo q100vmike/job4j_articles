@@ -26,7 +26,7 @@ public class Fool {
         }
         startAt++;
         if (again.equals(out)) {
-            startAt = 0;
+            startAt = 1;
         }
     }
 
