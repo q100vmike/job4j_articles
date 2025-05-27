@@ -19,14 +19,13 @@ public class Fool {
             out = !"Buzz".equals(answer) && player == "y" ? again : "Buzz";
         } else {
             out = String.valueOf(startAt).equals(answer) ? String.valueOf(startAt) : again;
-
         }
         if (player == "n" || (player == "y" && again.equals(out))) {
             System.out.println(out);
         }
         startAt++;
         if (again.equals(out)) {
-            startAt = 0;
+            startAt = 1;
         }
     }
 
