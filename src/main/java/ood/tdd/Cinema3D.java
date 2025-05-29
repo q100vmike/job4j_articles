@@ -20,4 +20,14 @@ public class Cinema3D implements Cinema {
     public void add(Session session) {
 
     }
+
+    @Override
+    public void addMovie(Movie movie) {
+
+    }
+
+    @Override
+    public List<Movie> getAllMovies() {
+        return List.of(new Movie3D());
+    }
 }

@@ -8,9 +8,10 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.Calendar;
 import java.util.List;
 
-@Disabled("Тесты отключены. Удалить аннотацию после реализации всех методов по заданию.")
 public class Cinema3DTest {
+
     @Test
+    @Disabled
     public void whenBuyThenGetTicket() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -20,6 +21,7 @@ public class Cinema3DTest {
     }
 
     @Test
+    @Disabled
     public void whenAddSessionThenItExistsBetweenAllSessions() {
         Cinema cinema = new Cinema3D();
         Session session = new Session3D();
@@ -29,11 +31,33 @@ public class Cinema3DTest {
     }
 
     @Test
+    @Disabled
     public void whenBuyOnInvalidRowThenGetException() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
         Calendar date = Calendar.getInstance();
         assertThatThrownBy(() -> cinema.buy(account, -1, 1, date))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @Disabled
+    public void whenAddMovieThenItExistsBetweenMovies() {
+        Movie movie = new Movie3D();
+        Cinema cinema = new Cinema3D();
+        cinema.addMovie(movie);
+        List<Movie> movies = cinema.getAllMovies();
+        assertThat(movies).contains(movie);
+    }
+
+    @Test
+    @Disabled
+    public void whenOverBookingThenGetException() {
+        Account account = new AccountCinema();
+        Cinema cinema = new Cinema3D();
+        Calendar date = Calendar.getInstance();
+        cinema.buy(account, 1, 1, date);
+        assertThatThrownBy(() -> cinema.buy(account, 1, 1, date))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
