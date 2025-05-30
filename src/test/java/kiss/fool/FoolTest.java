@@ -1,8 +1,7 @@
 package kiss.fool;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import ru.job4j.kiss.fool.Fool;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

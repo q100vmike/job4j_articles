@@ -2,6 +2,8 @@ package ood.tdd;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import ru.job4j.ood.tdd.*;
+import ru.job4j.ood.tdd.*;
 
 import static org.assertj.core.api.Assertions.*;
 

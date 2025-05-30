@@ -1,6 +1,4 @@
-package ood.tdd;
-
-import java.util.List;
+package ru.job4j.ood.tdd;
 
 public class Movie3D implements Movie {
 

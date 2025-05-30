@@ -1,4 +1,4 @@
-package kiss.fool;
+package ru.job4j.kiss.fool;
 
 import java.util.Scanner;
 
