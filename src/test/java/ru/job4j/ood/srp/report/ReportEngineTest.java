@@ -77,7 +77,7 @@ public class ReportEngineTest {
         store.add(worker2);
         store.add(worker3);
         store.add(worker4);
-        Report engine = new ReportEngine(store, parser,"Name; Hired; Fired; Salary;", "CSV", ";");
+        Report engine = new ReportEngine(store, parser, "Name; Hired; Fired; Salary;", "CSV", ";");
         StringBuilder expected = new StringBuilder()
                 .append("Name; Hired; Fired; Salary;")
                 .append(System.lineSeparator())
