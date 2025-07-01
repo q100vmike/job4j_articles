@@ -1,7 +1,14 @@
 package ru.job4j.ood.srp.model;
 
+import com.google.gson.annotations.Expose;
+import ru.job4j.ood.srp.formatter.DateTimeParser;
+import ru.job4j.ood.srp.formatter.ReportDateTimeParser;
+
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import java.beans.Transient;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -9,10 +16,12 @@ import java.util.Objects;
 @XmlType(propOrder = {"name", "hired", "fired", "salary"})
 
 public class Employee {
+
     private String name;
     private Calendar hired;
     private Calendar fired;
     private double salary;
+    private transient  DateTimeParser<Calendar> parser = new ReportDateTimeParser();
 
     public Employee(String name, Calendar hired, Calendar fired, double salary) {
         this.name = name;
@@ -65,8 +74,8 @@ public class Employee {
     public String toString() {
         return "Employee{"
                 + "name=" + getName()
-                + ", hired=" + getHired()
-                + ", fired=" + getFired()
+                + ", hired=" + parser.parse(getHired())
+                + ", fired=" + parser.parse(getFired())
                 + ", salary=" + getSalary()
                 + '}';
     }

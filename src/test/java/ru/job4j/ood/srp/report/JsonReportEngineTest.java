@@ -18,8 +18,7 @@ class JsonReportEngineTest {
 
         Calendar data1 = new GregorianCalendar(2017, Calendar.JANUARY, 25);
         Calendar data2 = new GregorianCalendar(2025, Calendar.MAY, 10);
-        //System.out.println(data1.getTime()); //Wed Jan 25 00:00:00 MSK 2017
-        //System.out.println(data2.getTime()); //Sat May 10 00:00:00 MSK 2025
+
         Employee employee = new Employee("John Doe",
                 now,
                 now,

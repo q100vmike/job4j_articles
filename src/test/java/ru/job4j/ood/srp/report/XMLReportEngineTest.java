@@ -16,25 +16,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class XMLReportEngineTest {
 
     @Test
-    void whenXMLReportGenerated0() {
-
-        Gson gson = new GsonBuilder()
-                .setDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz") // Set your desired date format
-                .create();
-
-        // Create a Calendar object
-        Calendar calendar = new GregorianCalendar(2023, Calendar.JUNE, 8, 17, 41);
-
-        // Serialize to JSON
-        String json = gson.toJson(calendar);
-        System.out.println("Serialized: " + json);
-
-        // Deserialize back to Calendar
-        Calendar deserialized = gson.fromJson(json, Calendar.class);
-        System.out.println("Deserialized: " + deserialized.getTime());
-    }
-
-    @Test
     void whenXMLReportGenerated() throws JAXBException {
         MemoryStore store = new MemoryStore();
         Employee employee = new Employee("John Doe",
