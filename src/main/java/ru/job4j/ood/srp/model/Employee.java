@@ -1,7 +1,12 @@
 package ru.job4j.ood.srp.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
+
+@XmlType(propOrder = {"name", "hired", "fired", "salary"})
 
 public class Employee {
     private String name;
@@ -19,7 +24,9 @@ public class Employee {
     public Employee(String name, double salary) {
         this.name = name;
         this.salary = salary;
+    }
 
+    public Employee() {
     }
 
     public String getName() {
@@ -52,6 +59,16 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{"
+                + "name=" + getName()
+                + ", hired=" + getHired()
+                + ", fired=" + getFired()
+                + ", salary=" + getSalary()
+                + '}';
     }
 
     @Override

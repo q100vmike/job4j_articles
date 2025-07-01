@@ -65,6 +65,31 @@
             <version>5.13.0</version>
             <scope>compile</scope>
         </dependency>
+        <!-- JAXB API -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
+        <!-- JAXB RI -->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.bndly.common.rest/org.bndly.common.rest.global-jaxbcontext-provider -->
+        <dependency>
+            <groupId>org.bndly.common.rest</groupId>
+            <artifactId>org.bndly.common.rest.global-jaxbcontext-provider</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.13.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -113,6 +138,14 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
             </plugin>
 
         </plugins>
