@@ -1,13 +1,17 @@
 package ru.job4j.ood.srp.model;
 
+import ru.job4j.ood.srp.formatter.DateTimeParser;
+import ru.job4j.ood.srp.formatter.ReportDateTimeParser;
+
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
 @XmlType(propOrder = {"name", "hired", "fired", "salary"})
-
 public class Employee {
     private String name;
     private Calendar hired;
@@ -83,8 +87,24 @@ public class Employee {
         return Objects.equals(name, employee.name);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }
+        @XmlRootElement(name = "employees")
+        public static class Emps {
+
+            private List<Employee> employees;
+
+            public List<Employee> getEmployees() {
+                return employees;
+            }
+
+            public void setEmployees(List<Employee> employees) {
+                this.employees = employees;
+            }
+
+            public Emps() {
+            }
+
+            public Emps(List<Employee> list) {
+                this.employees = list;
+            }
+        }
 }

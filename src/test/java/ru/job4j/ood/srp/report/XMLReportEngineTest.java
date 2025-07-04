@@ -17,7 +17,6 @@ class XMLReportEngineTest {
 
     @Test
     void whenXMLReportGenerated0() {
-
         Gson gson = new GsonBuilder()
                 .setDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz") // Set your desired date format
                 .create();
