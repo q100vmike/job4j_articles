@@ -40,7 +40,7 @@ class XMLReportEngineTest {
                 + "        <fired>08:06:2023 17:41</fired>\n"
                 + "        <salary>6000.0</salary>\n"
                 + "    </employee>\n"
-                +"</employees>\n";
+                + "</employees>\n";
 
         assertThat(report.generate(em -> true)).isEqualTo(expect);
     }

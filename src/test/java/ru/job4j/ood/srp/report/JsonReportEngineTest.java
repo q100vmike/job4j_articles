@@ -14,9 +14,9 @@ class JsonReportEngineTest {
     void whenJsonReportGenerated() {
         MemoryStore store = new MemoryStore();
         Calendar data1 = new GregorianCalendar(2017, Calendar.JANUARY, 25, 15, 14, 30);
-        Calendar data2 = new GregorianCalendar(2018, Calendar.DECEMBER, 10,16, 14, 30);
-        Calendar data3 = new GregorianCalendar(2019, Calendar.FEBRUARY, 20,17, 14, 30);
-        Calendar data4 = new GregorianCalendar(2020, Calendar.MAY, 11,18, 14, 30);
+        Calendar data2 = new GregorianCalendar(2018, Calendar.DECEMBER, 10, 16, 14, 30);
+        Calendar data3 = new GregorianCalendar(2019, Calendar.FEBRUARY, 20, 17, 14, 30);
+        Calendar data4 = new GregorianCalendar(2020, Calendar.MAY, 11, 18, 14, 30);
         Employee employee = new Employee("John Doe",
                 data1,
                 data2,
@@ -31,7 +31,7 @@ class JsonReportEngineTest {
         String ex = "[\n"
                 + "  {\n"
                 + "    \"name\": \"John Doe\",\n"
-                +"    \"hired\": \"25:01:2017 15:14\",\n"
+                + "    \"hired\": \"25:01:2017 15:14\",\n"
                 + "    \"fired\": \"10:12:2018 16:14\",\n"
                 + "    \"salary\": \"5000.0\"\n"
                 + "  },\n"
