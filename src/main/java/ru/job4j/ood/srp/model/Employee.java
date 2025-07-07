@@ -84,27 +84,11 @@ public class Employee {
             return false;
         }
         Employee employee = (Employee) o;
-        return Objects.equals(name, employee.name);
+        return Double.compare(salary, employee.salary) == 0 && Objects.equals(name, employee.name) && Objects.equals(hired, employee.hired) && Objects.equals(fired, employee.fired);
     }
 
-        @XmlRootElement(name = "employees")
-        public static class Emps {
-
-            private List<Employee> employees;
-
-            public List<Employee> getEmployees() {
-                return employees;
-            }
-
-            public void setEmployees(List<Employee> employees) {
-                this.employees = employees;
-            }
-
-            public Emps() {
-            }
-
-            public Emps(List<Employee> list) {
-                this.employees = list;
-            }
-        }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, hired, fired, salary);
+    }
 }

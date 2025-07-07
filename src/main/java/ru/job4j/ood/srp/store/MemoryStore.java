@@ -3,13 +3,12 @@ package ru.job4j.ood.srp.store;
 import ru.job4j.ood.srp.model.Employee;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class MemoryStore implements Store {
+
     private final List<Employee> employees = new ArrayList<>();
 
     @Override

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import ru.job4j.ood.srp.model.Employee;
 import ru.job4j.ood.srp.store.MemoryStore;
 
-import javax.xml.bind.JAXBException;
 import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -14,19 +13,17 @@ class JsonReportEngineTest {
     @Test
     void whenJsonReportGenerated() {
         MemoryStore store = new MemoryStore();
-        Calendar now = Calendar.getInstance();
-
-        Calendar data1 = new GregorianCalendar(2017, Calendar.JANUARY, 25);
-        Calendar data2 = new GregorianCalendar(2025, Calendar.MAY, 10);
-        //System.out.println(data1.getTime()); //Wed Jan 25 00:00:00 MSK 2017
-        //System.out.println(data2.getTime()); //Sat May 10 00:00:00 MSK 2025
+        Calendar data1 = new GregorianCalendar(2017, Calendar.JANUARY, 25, 15, 14, 30);
+        Calendar data2 = new GregorianCalendar(2018, Calendar.DECEMBER, 10,16, 14, 30);
+        Calendar data3 = new GregorianCalendar(2019, Calendar.FEBRUARY, 20,17, 14, 30);
+        Calendar data4 = new GregorianCalendar(2020, Calendar.MAY, 11,18, 14, 30);
         Employee employee = new Employee("John Doe",
-                now,
-                now,
+                data1,
+                data2,
                 5000.0);
         Employee employee1 = new Employee("Jane Smith",
-                now,
-                now,
+                data3,
+                data4,
                 6000.0);
         store.add(employee);
         store.add(employee1);
@@ -35,15 +32,15 @@ class JsonReportEngineTest {
                 [
                   {
                     "name": "John Doe",
-                    "hired": "08:06:2023 17:41",
-                    "fired": "08:06:2023 17:41",
-                    "salary": 5000.0
+                    "hired": "25:01:2017 15:14",
+                    "fired": "10:12:2018 16:14",
+                    "salary": "5000.0"
                   },
                   {
                     "name": "Jane Smith",
-                    "hired": "08:06:2023 17:41",
-                    "fired": "08:06:2023 17:41",
-                    "salary": 6000.0
+                    "hired": "20:02:2019 17:14",
+                    "fired": "11:05:2020 18:14",
+                    "salary": "6000.0"
                   }
                 ]""";
         assertThat(engine.generate(em -> true)).isEqualTo(ex);

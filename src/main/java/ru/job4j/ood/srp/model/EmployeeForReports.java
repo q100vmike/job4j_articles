@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
+@XmlType(propOrder = {"name", "hired", "fired", "salary"})
 public class EmployeeForReports {
 
     private String name;
@@ -28,16 +29,32 @@ public class EmployeeForReports {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getHired() {
         return hired;
+    }
+
+    public void setHired(String hired) {
+        this.hired = hired;
     }
 
     public String getFired() {
         return fired;
     }
 
+    public void setFired(String fired) {
+        this.fired = fired;
+    }
+
     public String getSalary() {
         return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
     }
 
     @Override
@@ -57,45 +74,41 @@ public class EmployeeForReports {
         return Objects.hash(name, hired, fired, salary);
     }
 
+    @Override
+    public String toString() {
+        return "EmployeeForReports{"
+                + "name='" + getName() + '\''
+                + ", hired='" + getHired() + '\''
+                + ", fired='" + getFired() + '\''
+                + ", salary='" + getSalary() + '\''
+                + '}';
+    }
+
     @XmlRootElement(name = "employees")
     public static class Employees {
 
-        private List<EmployeeForReports> employees;
+        private List<EmployeeForReports> employee;
 
-        public List<EmployeeForReports> getEmployees() {
-            return employees;
+        public List<EmployeeForReports> getEmployee() {
+            return employee;
         }
 
-        public void setEmployees(List<EmployeeForReports> employees) {
-            this.employees = employees;
+        public void setEmployee(List<EmployeeForReports> employees) {
+            this.employee = employees;
         }
 
         public Employees() {
         }
 
-        public Employees(List<Employee> employee) {
+        public Employees(List<Employee> list) {
             DateTimeParser<Calendar> parser = new ReportDateTimeParser();
-            employees = new ArrayList<>();
+            employee = new ArrayList<>();
 
-            employees.add(new EmployeeForReports("1",
-                    "1",
-                    "3",
-                    "4"));
-            employees.add(new EmployeeForReports("2",
-                    "2",
-                    "3",
-                    "4"));
-            employees.add(new EmployeeForReports("3",
-                    "3",
-                    "3",
-                    "4"));
-
-            /*
-            employee.stream()
-                    .forEach(e -> employees.add(new EmployeeForReports(e.getName(),
+            list.stream()
+                    .forEach(e -> employee.add(new EmployeeForReports(e.getName(),
                             parser.parse(e.getHired()),
                             parser.parse(e.getFired()),
-                            e.getSalary()))); */
+                            Double.toString(e.getSalary()))));
         }
     }
 }

@@ -3,6 +3,7 @@ package ru.job4j.ood.srp.report;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import ru.job4j.ood.srp.model.Employee;
+import ru.job4j.ood.srp.model.EmployeeForReports;
 import ru.job4j.ood.srp.store.Store;
 
 import java.util.function.Predicate;
@@ -19,6 +20,6 @@ public class JsonReportEngine implements Report {
 
     @Override
     public String generate(Predicate<Employee> filter) {
-        return library.toJson(store.findBy(filter));
+        return library.toJson(new EmployeeForReports.Employees(store.findBy(filter)).getEmployee());
     }
 }
