@@ -28,21 +28,20 @@ class JsonReportEngineTest {
         store.add(employee);
         store.add(employee1);
         Report engine = new JsonReportEngine(store);
-        String ex = """
-                [
-                  {
-                    "name": "John Doe",
-                    "hired": "25:01:2017 15:14",
-                    "fired": "10:12:2018 16:14",
-                    "salary": "5000.0"
-                  },
-                  {
-                    "name": "Jane Smith",
-                    "hired": "20:02:2019 17:14",
-                    "fired": "11:05:2020 18:14",
-                    "salary": "6000.0"
-                  }
-                ]""";
+        String ex = "[\n"
+                + "  {\n"
+                + "    \"name\": \"John Doe\",\n"
+                +"    \"hired\": \"25:01:2017 15:14\",\n"
+                + "    \"fired\": \"10:12:2018 16:14\",\n"
+                + "    \"salary\": \"5000.0\"\n"
+                + "  },\n"
+                + "  {\n"
+                + "    \"name\": \"Jane Smith\",\n"
+                + "    \"hired\": \"20:02:2019 17:14\",\n"
+                + "    \"fired\": \"11:05:2020 18:14\",\n"
+                + "    \"salary\": \"6000.0\"\n"
+                + "  }\n"
+                + "]";
         assertThat(engine.generate(em -> true)).isEqualTo(ex);
         }
 }
