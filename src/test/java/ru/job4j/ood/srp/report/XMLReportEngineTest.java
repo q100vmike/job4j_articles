@@ -43,6 +43,7 @@ class XMLReportEngineTest {
                     </employee>
                 </employees>
                 """;
+
         assertThat(report.generate(em -> true)).isEqualTo(expect);
     }
 }
