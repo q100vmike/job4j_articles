@@ -26,23 +26,21 @@ class XMLReportEngineTest {
         store.add(employee);
         store.add(employee1);
         Report report = new XMLReportEngine(store);
-        String expect = """
-                <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-                <employees>
-                    <employee>
-                        <name>John Doe</name>
-                        <hired>08:06:2023 17:41</hired>
-                        <fired>08:06:2023 17:41</fired>
-                        <salary>5000.0</salary>
-                    </employee>
-                    <employee>
-                        <name>Jane Smith</name>
-                        <hired>08:06:2023 17:41</hired>
-                        <fired>08:06:2023 17:41</fired>
-                        <salary>6000.0</salary>
-                    </employee>
-                </employees>
-                """;
+        String expect = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
+                + "<employees>\n"
+                + "    <employee>\n"
+                + "        <name>John Doe</name>\n"
+                + "        <hired>08:06:2023 17:41</hired>\n"
+                + "        <fired>08:06:2023 17:41</fired>\n"
+                + "        <salary>5000.0</salary>\n"
+                + "    </employee>\n"
+                + "    <employee>\n"
+                + "        <name>Jane Smith</name>\n"
+                + "        <hired>08:06:2023 17:41</hired>\n"
+                + "        <fired>08:06:2023 17:41</fired>\n"
+                + "        <salary>6000.0</salary>\n"
+                + "    </employee>\n"
+                +"</employees>\n";
 
         assertThat(report.generate(em -> true)).isEqualTo(expect);
     }
