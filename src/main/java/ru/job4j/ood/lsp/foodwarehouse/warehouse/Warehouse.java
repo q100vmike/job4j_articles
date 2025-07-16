@@ -18,4 +18,9 @@ public class Warehouse extends AbstractStore {
     public void add(Food food) {
         warehouse.add(food);
     }
+
+    @Override
+    public List<Food> get() {
+        return warehouse;
+    }
 }
