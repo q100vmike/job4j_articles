@@ -86,4 +86,119 @@ fruit2 Orange  18.06.25 25.09.25 shop -20
         Assertions.assertEquals(shopExpected, shopActual);
         Assertions.assertEquals(trashExpected, trashActual);
     }
+
+    @Test
+    public void whenOnlyWarehouse() {
+        LocalDateTime crBeer = LocalDateTime.of(2025, 7, 1, 0, 0);
+        LocalDateTime expBeer = LocalDateTime.of(2025, 8, 22, 0, 0);
+        Beer beer = new Beer("Guiness", 200, 5, crBeer, expBeer);
+
+        LocalDateTime crMeat = LocalDateTime.of(2025, 7, 1, 0, 0);
+        LocalDateTime expMeat = LocalDateTime.of(2025, 8, 1, 0, 0);
+        Meat meat = new Meat("Beef", 1000, 50, crMeat,expMeat);
+
+        LocalDateTime crFruit = LocalDateTime.of(2025, 7, 10, 0, 0);
+        LocalDateTime expFruit = LocalDateTime.of(2025, 8, 22, 0, 0);
+        Fruit fruit = new Fruit("Orange", 90, 50, crFruit, expFruit);
+
+        List<Food> foodList = List.of(beer, meat, fruit);
+        List<Food> warehouseExpected = List.of(beer, meat, fruit);
+
+        Warehouse warehouse = new Warehouse();
+        Shop shop = new Shop();
+        Trash trash = new Trash();
+
+        ControlQuality quality = new ControlQuality(shop, trash, warehouse);
+        foodList.stream().forEach(f -> quality.addToStorage(f));
+
+        List<Food> warehouseActual = warehouse.get();
+
+        Assertions.assertEquals(warehouseExpected, warehouseActual);
+    }
+
+    @Test
+    public void whenOnlyShop() {
+        LocalDateTime crBeer = LocalDateTime.of(2025, 7, 1, 0, 0);
+        LocalDateTime expBeer = LocalDateTime.of(2025, 9, 1, 0, 0);
+        Beer beer = new Beer("Guiness", 200, 5, crBeer, expBeer);
+
+        LocalDateTime crMeat = LocalDateTime.of(2025, 7, 1, 0, 0);
+        LocalDateTime expMeat = LocalDateTime.of(2025, 9, 10, 0, 0);
+        Meat meat = new Meat("Beef", 1000, 50, crMeat,expMeat);
+
+        LocalDateTime crFruit = LocalDateTime.of(2025, 5, 1, 0, 0);
+        LocalDateTime expFruit = LocalDateTime.of(2025, 12, 1, 0, 0);
+        Fruit fruit = new Fruit("Orange", 90, 50, crFruit, expFruit);
+
+        List<Food> foodList = List.of(beer, meat, fruit);
+        List<Food> shopExpected = List.of(beer, meat, fruit);
+
+        Warehouse warehouse = new Warehouse();
+        Shop shop = new Shop();
+        Trash trash = new Trash();
+
+        ControlQuality quality = new ControlQuality(shop, trash, warehouse);
+        foodList.stream().forEach(f -> quality.addToStorage(f));
+
+        List<Food> shopActual = shop.get();
+
+        Assertions.assertEquals(shopExpected, shopActual);
+    }
+
+    @Test
+    public void whenOnlyTrash() {
+        LocalDateTime crBeer = LocalDateTime.of(2024, 7, 1, 0, 0);
+        LocalDateTime expBeer = LocalDateTime.of(2025, 9, 1, 0, 0);
+        Beer beer = new Beer("Guiness", 200, 5, crBeer, expBeer);
+
+        LocalDateTime crMeat = LocalDateTime.of(2023, 7, 1, 0, 0);
+        LocalDateTime expMeat = LocalDateTime.of(2025, 9, 10, 0, 0);
+        Meat meat = new Meat("Beef", 1000, 50, crMeat,expMeat);
+
+        LocalDateTime crFruit = LocalDateTime.of(2020, 5, 1, 0, 0);
+        LocalDateTime expFruit = LocalDateTime.of(2025, 12, 1, 0, 0);
+        Fruit fruit = new Fruit("Orange", 90, 50, crFruit, expFruit);
+
+        List<Food> foodList = List.of(beer, meat, fruit);
+        List<Food> trashExpected = List.of(beer, meat, fruit);
+
+        Warehouse warehouse = new Warehouse();
+        Shop shop = new Shop();
+        Trash trash = new Trash();
+
+        ControlQuality quality = new ControlQuality(shop, trash, warehouse);
+        foodList.stream().forEach(f -> quality.addToStorage(f));
+
+        List<Food> trashActual = shop.get();
+
+        Assertions.assertEquals(trashExpected, trashActual);
+    }
+    @Test
+    public void whenOnlyShopMinusTwentyPercentPrice() {
+        LocalDateTime crBeer = LocalDateTime.of(2024, 7, 1, 0, 0);
+        LocalDateTime expBeer = LocalDateTime.of(2025, 9, 1, 0, 0);
+        Beer beer = new Beer("Guiness", 200, 5, crBeer, expBeer);
+
+        LocalDateTime crMeat = LocalDateTime.of(2023, 7, 1, 0, 0);
+        LocalDateTime expMeat = LocalDateTime.of(2025, 9, 10, 0, 0);
+        Meat meat = new Meat("Beef", 1000, 50, crMeat,expMeat);
+
+        LocalDateTime crFruit = LocalDateTime.of(2020, 5, 1, 0, 0);
+        LocalDateTime expFruit = LocalDateTime.of(2025, 12, 1, 0, 0);
+        Fruit fruit = new Fruit("Orange", 90, 50, crFruit, expFruit);
+
+        List<Food> foodList = List.of(beer, meat, fruit);
+        List<Food> trashExpected = List.of(beer, meat, fruit);
+
+        Warehouse warehouse = new Warehouse();
+        Shop shop = new Shop();
+        Trash trash = new Trash();
+
+        ControlQuality quality = new ControlQuality(shop, trash, warehouse);
+        foodList.stream().forEach(f -> quality.addToStorage(f));
+
+        List<Food> trashActual = shop.get();
+
+        Assertions.assertEquals(trashExpected, trashActual);m
+    }
 }
