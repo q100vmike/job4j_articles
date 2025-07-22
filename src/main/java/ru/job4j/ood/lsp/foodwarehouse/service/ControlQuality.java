@@ -22,7 +22,7 @@ public class ControlQuality {
     }
 
     public void addToStorage(Food food) {
-        Store store = getStorage(freshChecker(food));
+        Store store = getStorage(food);
         store.add(food);
     }
 
@@ -35,16 +35,21 @@ public class ControlQuality {
         return percent;
     }
 
-    private Store getStorage(int percent) {
+    private Store getStorage(Food food) {
         Store store = null;
+        int percent = 0;
+        long daysGone = ChronoUnit.DAYS.between(food.getCreateDate(), LocalDateTime.now());
+        long daysAll = ChronoUnit.DAYS.between(food.getCreateDate(), food.getExpiryDate());
+        percent = (int) (daysGone * 100 / daysAll);
 
         if (percent < 25) {
             store = this.warehouse;
-        } else if (percent > 25 && percent < 75) {
+        } else if (percent > 25 && percent <= 75) {
             store = this.shop;
-        } else if (percent > 75 && percent < 100) {
+        } else if (percent > 75 && percent <= 100) {
             store = this.shop;
-        } else if (percent > 99) {
+            store.discountPriceTwentyPercent(food);
+        } else if (percent > 100) {
             store = this.trash;
         }
         return store;
