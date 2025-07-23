@@ -50,31 +50,6 @@ class ControlQualityTest {
         Shop shop = new Shop();
         Trash trash = new Trash();
 
-        int percent1 = ControlQuality.freshChecker(meat2);
-        int percent2 = ControlQuality.freshChecker(fruit1);
-        int percent3 = ControlQuality.freshChecker(fruit2);
-
-
-/*
-
-Guiness 01.07.25 01.08.26 wh
-Amstel  01.07.25 17.07.25 trash
-Ohota   01.07.25 16.07.25 trash
-Сhicken 18.07.25 20.07.25 trash
-meat2 Beef    10.07.25 29.07.25 shop -20
-fruit1 Apple   11.07.01 27.07.25 shop -20
-fruit2 Orange  18.06.25 30.09.25 shop -20
-
-        3.1. Если срок годности израсходован меньше чем на 25%, продукт должен оказаться в Warehouse;
-
-        3.2. Если срок годности израсходован от 25% до 75%, продукт должен оказаться в Shop;
-
-        3.3. Если срок годности израсходован более, чем на 75%, то продукт должен оказаться в Shop и его
-        цена должна быть снижена на размер скидки в 20 % от первоначальной цены.
-
-        3.4. Если срок годности вышел (израсходован полностью) , продукт должен оказаться в Trash.
-*/
-
         ControlQuality quality = new ControlQuality(shop, trash, warehouse);
         foodList.stream().forEach(f -> quality.addToStorage(f));
 

@@ -26,7 +26,7 @@ public class ControlQuality {
         store.add(food);
     }
 
-    public static int freshChecker(Food food) {
+    public int freshChecker(Food food) {
         int percent = 0;
         long daysGone = ChronoUnit.DAYS.between(food.getCreateDate(), LocalDateTime.now());
         long daysAll = ChronoUnit.DAYS.between(food.getCreateDate(), food.getExpiryDate());
