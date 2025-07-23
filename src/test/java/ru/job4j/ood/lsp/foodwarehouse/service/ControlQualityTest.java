@@ -33,13 +33,13 @@ class ControlQualityTest {
                 LocalDateTime.of(2025, 7, 20, 0, 0));
 
         Meat meat2 = new Meat("Beef", 1000, 50, LocalDateTime.of(2025, 7, 10, 0, 0),
-                LocalDateTime.of(2025, 7, 22, 0, 0));
+                LocalDateTime.of(2025, 7, 29, 0, 0));
 
         Fruit fruit1 = new Fruit("Apple", 120, 50, LocalDateTime.of(2025, 7, 1, 0, 0),
-                LocalDateTime.of(2025, 7, 25, 0, 0));
+                LocalDateTime.of(2025, 7, 28, 0, 0));
         
         Fruit fruit2 = new Fruit("Orange", 90, 50, LocalDateTime.of(2025, 6, 18, 0, 0),
-                LocalDateTime.of(2025, 7, 21, 0, 0));
+                LocalDateTime.of(2025, 7, 30, 0, 0));
 
         List<Food> foodList = List.of(beer1, beer2, beer3, meat1, meat2, fruit1, fruit2);
         List<Food> warehouseExpected = List.of(beer1);
@@ -61,9 +61,9 @@ Guiness 01.07.25 01.08.26 wh
 Amstel  01.07.25 17.07.25 trash
 Ohota   01.07.25 16.07.25 trash
 Сhicken 18.07.25 20.07.25 trash
-meat2 Beef    10.07.25 22.07.25 shop -20
-fruit1 Apple   11.07.01 23.07.25 shop -20
-fruit2 Orange  18.06.25 25.09.25 shop -20
+meat2 Beef    10.07.25 29.07.25 shop -20
+fruit1 Apple   11.07.01 27.07.25 shop -20
+fruit2 Orange  18.06.25 30.09.25 shop -20
 
         3.1. Если срок годности израсходован меньше чем на 25%, продукт должен оказаться в Warehouse;
 
@@ -90,15 +90,15 @@ fruit2 Orange  18.06.25 25.09.25 shop -20
     @Test
     public void whenOnlyWarehouse() {
         LocalDateTime crBeer = LocalDateTime.of(2025, 7, 1, 0, 0);
-        LocalDateTime expBeer = LocalDateTime.of(2025, 8, 22, 0, 0);
+        LocalDateTime expBeer = LocalDateTime.of(2026, 8, 22, 0, 0);
         Beer beer = new Beer("Guiness", 200, 5, crBeer, expBeer);
 
         LocalDateTime crMeat = LocalDateTime.of(2025, 7, 1, 0, 0);
-        LocalDateTime expMeat = LocalDateTime.of(2025, 8, 1, 0, 0);
+        LocalDateTime expMeat = LocalDateTime.of(2026, 8, 1, 0, 0);
         Meat meat = new Meat("Beef", 1000, 50, crMeat,expMeat);
 
         LocalDateTime crFruit = LocalDateTime.of(2025, 7, 10, 0, 0);
-        LocalDateTime expFruit = LocalDateTime.of(2025, 8, 22, 0, 0);
+        LocalDateTime expFruit = LocalDateTime.of(2026, 8, 22, 0, 0);
         Fruit fruit = new Fruit("Orange", 90, 50, crFruit, expFruit);
 
         List<Food> foodList = List.of(beer, meat, fruit);
@@ -185,10 +185,14 @@ fruit2 Orange  18.06.25 25.09.25 shop -20
 
         LocalDateTime crFruit = LocalDateTime.of(2020, 5, 1, 0, 0);
         LocalDateTime expFruit = LocalDateTime.of(2025, 12, 1, 0, 0);
-        Fruit fruit = new Fruit("Orange", 90, 50, crFruit, expFruit);
+        Fruit fruit = new Fruit("Orange", 120, 50, crFruit, expFruit);
+
+        Beer exp_beer = new Beer("Guiness", 160, 5, crBeer, expBeer);
+        Meat exp_meat = new Meat("Beef", 800, 50, crMeat,expMeat);
+        Fruit exp_fruit = new Fruit("Orange", 96, 50, crFruit, expFruit);
 
         List<Food> foodList = List.of(beer, meat, fruit);
-        List<Food> trashExpected = List.of(beer, meat, fruit);
+        List<Food> trashExpected = List.of(exp_beer, exp_meat, exp_fruit);
 
         Warehouse warehouse = new Warehouse();
         Shop shop = new Shop();
@@ -199,6 +203,6 @@ fruit2 Orange  18.06.25 25.09.25 shop -20
 
         List<Food> trashActual = shop.get();
 
-        Assertions.assertEquals(trashExpected, trashActual);m
+        Assertions.assertEquals(trashExpected, trashActual);
     }
 }
