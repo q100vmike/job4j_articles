@@ -49,8 +49,9 @@ class ControlQualityTest {
         Warehouse warehouse = new Warehouse();
         Shop shop = new Shop();
         Trash trash = new Trash();
+        List<Store> stores = List.of(warehouse, shop, trash);
 
-        ControlQuality quality = new ControlQuality(shop, trash, warehouse);
+        ControlQuality quality = new ControlQuality(stores);
         foodList.stream().forEach(f -> quality.addToStorage(f));
 
         List<Food> warehouseActual = warehouse.get();
@@ -82,8 +83,9 @@ class ControlQualityTest {
         Warehouse warehouse = new Warehouse();
         Shop shop = new Shop();
         Trash trash = new Trash();
+        List<Store> stores = List.of(warehouse, shop, trash);
 
-        ControlQuality quality = new ControlQuality(shop, trash, warehouse);
+        ControlQuality quality = new ControlQuality(stores);
         foodList.stream().forEach(f -> quality.addToStorage(f));
 
         List<Food> warehouseActual = warehouse.get();
@@ -111,8 +113,9 @@ class ControlQualityTest {
         Warehouse warehouse = new Warehouse();
         Shop shop = new Shop();
         Trash trash = new Trash();
+        List<Store> stores = List.of(warehouse, shop, trash);
 
-        ControlQuality quality = new ControlQuality(shop, trash, warehouse);
+        ControlQuality quality = new ControlQuality(stores);
         foodList.stream().forEach(f -> quality.addToStorage(f));
 
         List<Food> shopActual = shop.get();
@@ -140,8 +143,9 @@ class ControlQualityTest {
         Warehouse warehouse = new Warehouse();
         Shop shop = new Shop();
         Trash trash = new Trash();
+        List<Store> stores = List.of(warehouse, shop, trash);
 
-        ControlQuality quality = new ControlQuality(shop, trash, warehouse);
+        ControlQuality quality = new ControlQuality(stores);
         foodList.stream().forEach(f -> quality.addToStorage(f));
 
         List<Food> trashActual = shop.get();
@@ -172,8 +176,9 @@ class ControlQualityTest {
         Warehouse warehouse = new Warehouse();
         Shop shop = new Shop();
         Trash trash = new Trash();
+        List<Store> stores = List.of(warehouse, shop, trash);
 
-        ControlQuality quality = new ControlQuality(shop, trash, warehouse);
+        ControlQuality quality = new ControlQuality(stores);
         foodList.stream().forEach(f -> quality.addToStorage(f));
 
         List<Food> trashActual = shop.get();

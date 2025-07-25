@@ -58,5 +58,8 @@ public class Beer extends Food {
         super.setExpiryDate(expiryDate);
     }
 
-
+    @Override
+    public void discountPriceTwentyPercent() {
+        super.discountPriceTwentyPercent();
+    }
 }

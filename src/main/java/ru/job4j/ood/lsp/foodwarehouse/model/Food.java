@@ -63,6 +63,10 @@ public abstract class Food {
         this.expiryDate = expiryDate;
     }
 
+    public void discountPriceTwentyPercent() {
+        setPrice(getPrice() - (getPrice() * 0.2));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -16,8 +16,4 @@ public abstract class AbstractStore implements Store {
         return List.of();
     }
 
-    @Override
-    public void discountPriceTwentyPercent(Food food) {
-        food.setPrice(food.getPrice() - (food.getPrice() * 0.2));
-    }
 }

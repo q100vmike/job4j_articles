@@ -10,6 +10,4 @@ public interface Store {
 
     public List<Food> get();
 
-    public void discountPriceTwentyPercent(Food food);
-
 }

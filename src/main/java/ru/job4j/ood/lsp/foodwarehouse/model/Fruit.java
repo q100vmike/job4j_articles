@@ -57,4 +57,8 @@ public class Fruit extends Food {
     public void setExpiryDate(LocalDateTime expiryDate) {
         super.setExpiryDate(expiryDate);
     }
+
+    public void discountPriceTwentyPercent() {
+        setPrice(getPrice() - (getPrice() * 0.2));
+    }
 }
