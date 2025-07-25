@@ -131,7 +131,7 @@ class ControlQualityTest {
 
         LocalDateTime crMeat = LocalDateTime.of(2023, 7, 1, 0, 0);
         LocalDateTime expMeat = LocalDateTime.of(2025, 9, 10, 0, 0);
-        Meat meat = new Meat("Beef", 1000, 50, crMeat,expMeat);
+        Meat meat = new Meat("Beef", 1000, 50, crMeat, expMeat);
 
         LocalDateTime crFruit = LocalDateTime.of(2020, 5, 1, 0, 0);
         LocalDateTime expFruit = LocalDateTime.of(2025, 12, 1, 0, 0);
