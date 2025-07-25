@@ -71,7 +71,7 @@ class ControlQualityTest {
 
         LocalDateTime crMeat = LocalDateTime.of(2025, 7, 1, 0, 0);
         LocalDateTime expMeat = LocalDateTime.of(2026, 8, 1, 0, 0);
-        Meat meat = new Meat("Beef", 1000, 50, crMeat,expMeat);
+        Meat meat = new Meat("Beef", 1000, 50, crMeat, expMeat);
 
         LocalDateTime crFruit = LocalDateTime.of(2025, 7, 10, 0, 0);
         LocalDateTime expFruit = LocalDateTime.of(2026, 8, 22, 0, 0);
@@ -101,7 +101,7 @@ class ControlQualityTest {
 
         LocalDateTime crMeat = LocalDateTime.of(2025, 7, 1, 0, 0);
         LocalDateTime expMeat = LocalDateTime.of(2025, 9, 10, 0, 0);
-        Meat meat = new Meat("Beef", 1000, 50, crMeat,expMeat);
+        Meat meat = new Meat("Beef", 1000, 50, crMeat, expMeat);
 
         LocalDateTime crFruit = LocalDateTime.of(2025, 5, 1, 0, 0);
         LocalDateTime expFruit = LocalDateTime.of(2025, 12, 1, 0, 0);
@@ -152,6 +152,7 @@ class ControlQualityTest {
 
         Assertions.assertEquals(trashExpected, trashActual);
     }
+
     @Test
     public void whenOnlyShopMinusTwentyPercentPrice() {
         LocalDateTime crBeer = LocalDateTime.of(2024, 7, 1, 0, 0);
@@ -160,18 +161,18 @@ class ControlQualityTest {
 
         LocalDateTime crMeat = LocalDateTime.of(2023, 7, 1, 0, 0);
         LocalDateTime expMeat = LocalDateTime.of(2025, 9, 10, 0, 0);
-        Meat meat = new Meat("Beef", 1000, 50, crMeat,expMeat);
+        Meat meat = new Meat("Beef", 1000, 50, crMeat, expMeat);
 
         LocalDateTime crFruit = LocalDateTime.of(2020, 5, 1, 0, 0);
         LocalDateTime expFruit = LocalDateTime.of(2025, 12, 1, 0, 0);
         Fruit fruit = new Fruit("Orange", 120, 50, crFruit, expFruit);
 
-        Beer exp_beer = new Beer("Guiness", 160, 5, crBeer, expBeer);
-        Meat exp_meat = new Meat("Beef", 800, 50, crMeat,expMeat);
-        Fruit exp_fruit = new Fruit("Orange", 96, 50, crFruit, expFruit);
+        Beer expectedBeer = new Beer("Guiness", 160, 5, crBeer, expBeer);
+        Meat expectedMeat = new Meat("Beef", 800, 50, crMeat, expMeat);
+        Fruit expectedFruit = new Fruit("Orange", 96, 50, crFruit, expFruit);
 
         List<Food> foodList = List.of(beer, meat, fruit);
-        List<Food> trashExpected = List.of(exp_beer, exp_meat, exp_fruit);
+        List<Food> trashExpected = List.of(expectedBeer, expectedMeat, expectedFruit);
 
         Warehouse warehouse = new Warehouse();
         Shop shop = new Shop();
