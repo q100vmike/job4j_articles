@@ -16,7 +16,9 @@ public class Warehouse extends AbstractStore {
 
     @Override
     public void add(Food food) {
-        warehouse.add(food);
+        if (freshChecker(food) < 25) {
+            warehouse.add(food);
+        }
     }
 
     @Override

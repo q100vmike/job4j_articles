@@ -17,11 +17,22 @@ public class Shop extends AbstractStore {
 
     @Override
     public void add(Food food) {
-        shop.add(food);
+        int percent = freshChecker(food);
+        if (percent > 25 && percent <= 100) {
+            if (percent > 75) {
+                food.discountPriceTwentyPercent();
+            }
+            shop.add(food);
+        }
     }
 
     @Override
     public List<Food> get() {
         return shop;
+    }
+
+    @Override
+    public int freshChecker(Food food) {
+        return super.freshChecker(food);
     }
 }

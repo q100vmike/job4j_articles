@@ -16,7 +16,9 @@ public class Trash extends AbstractStore {
 
     @Override
     public void add(Food food) {
-        trash.add(food);
+        if (freshChecker(food) > 100) {
+            trash.add(food);
+        }
     }
 
     @Override
