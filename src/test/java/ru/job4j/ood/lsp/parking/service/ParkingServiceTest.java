@@ -17,9 +17,9 @@ class ParkingServiceTest {
     @Test
     public void whenParkingServiceTest9Pass0Truck() {
         ParkingService ParkingService = new ParkingService(10, 6);
-        Car car1 = new Car(1);
-        Car car2 = new Car(2);
-        Car car3 = new Car(4);
+        PassengerCar car1 = new PassengerCar(1);
+        Truck car2 = new Truck(2);
+        Truck car3 = new Truck(4);
 
         List<Car> cars = List.of(car1, car2, car3);
         cars.stream().forEach(c -> ParkingService.park(c));
@@ -35,11 +35,11 @@ class ParkingServiceTest {
     @Test
     public void whenParkingServiceTest3Pass2Truck() {
         ParkingService ParkingService = new ParkingService(10, 6);
-        Car car1 = new Car(1);
-        Car car2 = new Car(1);
-        Car car3 = new Car(1);
-        Car car4 = new Car(4);
-        Car car5 = new Car(4);
+        PassengerCar car1 = new PassengerCar(1);
+        PassengerCar car2 = new PassengerCar(1);
+        Truck car3 = new Truck(1);
+        Truck car4 = new Truck(4);
+        Truck car5 = new Truck(4);
 
         List<Car> cars = List.of(car1, car2, car3, car4, car5);
         cars.stream().forEach(c -> ParkingService.park(c));
@@ -54,10 +54,10 @@ class ParkingServiceTest {
     @Test
     public void whenParkingServiceTest0Pass0Truck() {
         ParkingService ParkingService = new ParkingService(10, 10);
-        Car car1 = new Car(5);
-        Car car2 = new Car(5);
-        Car car3 = new Car(5);
-        Car car4 = new Car(5);
+        Truck car1 = new Truck(5);
+        Truck car2 = new Truck(5);
+        Truck car3 = new Truck(5);
+        Truck car4 = new Truck(5);
 
         List<Car> cars = List.of(car1, car2, car3, car4);
         cars.stream().forEach(c -> ParkingService.park(c));
