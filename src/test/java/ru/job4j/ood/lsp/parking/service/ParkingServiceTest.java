@@ -6,10 +6,7 @@ import ru.job4j.ood.lsp.parking.model.car.Car;
 import ru.job4j.ood.lsp.parking.model.PassengerCar;
 import ru.job4j.ood.lsp.parking.model.Truck;
 import ru.job4j.ood.lsp.parking.model.parking.SupermarketParking;
-
-
 import java.util.List;
-
 
 class ParkingServiceTest {
 
