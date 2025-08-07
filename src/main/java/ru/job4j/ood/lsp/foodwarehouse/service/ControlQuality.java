@@ -22,4 +22,12 @@ public class ControlQuality {
     public void addToStorage(Food food) {
         stores.stream().forEach(s -> s.add(food));
     }
+
+    public void resort() {
+        List<Store> reStores = new ArrayList<>();
+        for (Store store : stores) {
+            reStores.add(store);
+        }
+        stores = reStores;
+    }
 }
