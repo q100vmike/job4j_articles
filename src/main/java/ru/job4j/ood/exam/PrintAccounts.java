@@ -14,7 +14,7 @@ public class PrintAccounts implements  Export {
 
     @Override
     public void export(String message) {
-        System.out.println("Текущие балансы:");
+        System.out.println("Текущие балансы " + message + ":");
         for (Account acc : accounts.values()) {
             System.out.println(acc.getId() + " -> " + acc.getBalance());
         }

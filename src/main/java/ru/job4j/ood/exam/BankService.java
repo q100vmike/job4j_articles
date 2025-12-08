@@ -6,32 +6,37 @@ import java.util.Map;
 public class BankService {
 
     private Map<String, Account> accounts = new HashMap<>();
-    private double fee = 0.015;
 
-    public BankService() {
+    private Logger accountLogger;
 
+    public BankService(Logger accountLogger) {
+        this.accountLogger = accountLogger;
     }
 
     public Map<String, Account> getAccounts() {
-        return accounts;
+        Map<String, Account> copy = new HashMap<>(accounts);
+        return copy;
     }
 
     public void registerAccount(String id, double initialBalance, boolean vip) {
         accounts.put(id, new Account(id, initialBalance, vip));
-        System.out.println("Аккаунт " + id + " зарегистрирован. VIP=" + vip);
+        accountLogger.log("Аккаунт " + id + " зарегистрирован. VIP=" + vip);
     }
 
     public void transfer(String fromId, String toId, double amount) {
         Account from = accounts.get(fromId);
         Account to = accounts.get(toId);
 
+        FeeCalculator feeCalculator = new FeeCalculator(from.isVip());
+        double fee = feeCalculator.getFee();
+
         if (from == null || to == null) {
-            System.out.println("ОШИБКА: аккаунт не найден");  // логирование внутри — ещё SRP нарушение
+            accountLogger.errorNofLog();  // логирование внутри — ещё SRP нарушение
             return;
         }
 
         if (from.getBalance() < amount) {
-            System.out.println("ОШИБКА: недостаточно средств");
+            accountLogger.errorNoMoneyLog();
             return;
         }
 
@@ -39,7 +44,7 @@ public class BankService {
 
         to.setBalance(AccountUtils.deposit(to.getBalance(), amount));
 
-        System.out.println("Перевод " + amount + " от " + fromId + " к " + toId + ". Комиссия: " + fee);
-        System.out.println("SMS: перевод выполнен успешно");
+        accountLogger.log("Перевод " + amount + " от " + fromId + " к " + toId + ". Комиссия: " + fee);
+        accountLogger.successLog();
     }
 }

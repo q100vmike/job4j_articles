@@ -8,6 +8,7 @@ public class Account {
     public Account(String id, double balance, boolean vip) {
         this.id = id;
         this.balance = balance;
+        this.vip = vip;
     }
 
     public String getId() {
@@ -20,5 +21,9 @@ public class Account {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public boolean isVip() {
+        return vip;
     }
 }

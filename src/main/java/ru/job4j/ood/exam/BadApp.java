@@ -14,14 +14,6 @@ public class BadApp {
             this.balance = balance;
         }
 
-//        public void withdraw(double amount) {
-//            balance -= amount;
-//        }
-//
-//         public void deposit(double amount) {
-//            balance += amount;
-//        }
-
         public String getId() {
             return id;
         }
@@ -37,10 +29,6 @@ public class BadApp {
             super(id, balance);
         }
 
-//        @Override
-//        public void withdraw(double amount) {
-//            System.out.println("VIP-клиент " + id + " не теряет деньги при попытке списания " + amount);
-//        }
     }
 
     public static class BadBankService {
@@ -72,9 +60,6 @@ public class BadApp {
 
             double fee = amount * 0.015;
 
-//            from.withdraw(amount + fee);
-//            to.deposit(amount);
-
             System.out.println("Перевод " + amount + " от " + fromId + " к " + toId + ". Комиссия: " + fee);
             System.out.println("SMS: перевод выполнен успешно");
         }
@@ -96,8 +81,8 @@ public class BadApp {
     }
 
     public static void main(String[] args) {
-
-        BankService bank = new BankService();
+        Logger accountLogger = new AccountLogger();
+        BankService bank = new BankService(accountLogger);
         // Регистрируем обычный и VIP аккаунты
         bank.registerAccount("regular", 500.0, false);
         bank.registerAccount("vip", 1000.0, true);
