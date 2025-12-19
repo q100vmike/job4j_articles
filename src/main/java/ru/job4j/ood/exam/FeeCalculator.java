@@ -6,11 +6,13 @@ public class FeeCalculator {
 
     public FeeCalculator(boolean clientType) {
         this.clientType = clientType;
-        this.fee = 0.015;
+        this.fee = clientType ? 0 : 0.015;
     }
 
     public void setFee(double fee) {
-        this.fee = fee;
+        if (!this.clientType) {
+            this.fee = fee;
+        }
     }
 
     public double getFee() {
