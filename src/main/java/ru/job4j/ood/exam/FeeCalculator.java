@@ -1,5 +1,6 @@
 package ru.job4j.ood.exam;
 
+//commit1
 public class FeeCalculator {
 
     private boolean clientType = false;
