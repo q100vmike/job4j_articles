@@ -2,6 +2,7 @@ package ru.job4j.ood.exam;
 
 //commit1
 //commit2
+//commit3
 public class FeeCalculator {
 
     private boolean clientType = false;
