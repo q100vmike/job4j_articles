@@ -1,6 +1,6 @@
 package ru.job4j.ood.exam;
 
-//git commit new11
+//git commit new111
 
 public class FeeCalculator {
 
