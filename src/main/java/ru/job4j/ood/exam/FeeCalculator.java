@@ -2,7 +2,7 @@ package ru.job4j.ood.exam;
 
 //commit 0
 //commit 1
-//Объединение зафиксированных изменений
+//Объединение зафиксированных изменений1
 public class FeeCalculator {
 
     private boolean clientType = false;
