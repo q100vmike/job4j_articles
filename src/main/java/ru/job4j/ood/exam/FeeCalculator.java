@@ -1,6 +1,6 @@
 package ru.job4j.ood.exam;
 
-//Объединение зафиксированных
+//возврат изменений
 public class FeeCalculator {
 
     private boolean clientType = false;
